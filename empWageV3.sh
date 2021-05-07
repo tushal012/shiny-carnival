@@ -11,7 +11,7 @@ numWorkingDays=20;
 		empCheck=$((RANDOM%3));
 		case $empCheck in
 		 $isFullTime)
-			empHrs=4
+			empHrs=8
 			;;
 			$isPartTime)
 				empHrs=4
