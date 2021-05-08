@@ -2,19 +2,24 @@
 
 echo "Welcome to EmployeeWage"
 
-IS_PRESENT=1
+isPresent=1;
 
-#Variables
-empCheck=$(( RANDOM % 2  ))
+function presentOrAbsent(){
+	local empcheck=$1
+	randomCheck=$(( RANDOM % 2  ))
+	
+         if [ $isPresent -eq $randomCheck ]
+         then
+                 echo "employee is  present"
+         else                
+		 echo "employee is absent"
+   	fi
 
-#Selection
+}
+checkPresent="$(presentOrAbsent)"
+echo $checkPresent
 
-if [$empcheck -eq $IS_PRESENT ]
-then
-	echo "employee is  present"
-else
-	echo "employee is absent"
-fi
+
 
 
 
