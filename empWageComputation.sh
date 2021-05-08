@@ -2,8 +2,14 @@
 
 echo "Welcome to EmployeeWage"
 
+
 isPresent=1;
 randomCheck=$(( RANDOM % 2  ))
+isPartTime=1;
+isFullTime=2;
+totalSalary=0;
+empRatePerHr=20;
+numWorkingDays=20;
 
 function presentOrAbsent(){
 	local empcheck=$1
@@ -17,8 +23,8 @@ function presentOrAbsent(){
    	fi
 
 }
-checkPresent="$(presentOrAbsent)"
-echo $checkPresent
+#checkPresent="$(presentOrAbsent)"
+#echo $checkPresent
 
 function empRatePerHour(){
 
@@ -31,5 +37,29 @@ function empRatePerHour(){
 		salary=0;
 	fi
 }
-checkEmployeeSalary="$(empRatePerHour)"
-echo $checkEmployeeSalary
+#checkEmployeeSalary="$(empRatePerHour)"
+#echo $checkEmployeeSalary
+
+
+function workingDays(){
+
+ 	for (( Day=1; Day<=$numWorkingDays; Day++ ))
+		do
+			empCheck=$((RANDOM%3));
+			case $empCheck in
+		 	$isFullTime)
+			empHrs=4
+			;;
+			$isPartTime)
+				empHrs=4
+				;;
+				*)
+				empHrs=0;;
+			esac
+			salary=$(($empHrs*$empRatePerHr));
+			totalSalary=$(($totalSalary+$salary));
+		done
+}
+#checkTotalSalary="$(workingDays)"
+#echo $checkTotalSalary
+"$@"
